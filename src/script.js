@@ -12,7 +12,7 @@ function TimeNow() {
     "Sunday",
     "Monday",
     "Tuesday",
-    "Wednesdat",
+    "Wednesday",
     "Thuesday",
     "Friday",
     "Saturday"
