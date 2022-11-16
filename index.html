@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SheCodes Homework</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="src/styles.css">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://kit.fontawesome.com/de0e5df7de.js" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Search -->
+
+    <form 
+    id="search-form">
+      <div 
+      class="searchInput">
+        <div 
+        class="input-group mb-3">
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Enter your city" 
+            aria-describedby="button-addon2"
+            autofocus="on" 
+            id="search-text-input" />
+          <button 
+            class="btn btn-primary" 
+            type="button" 
+            id="button-addon2">
+              🔎 Search
+          </button>
+          <button 
+            class="btn btn-secondary" 
+            type="button" 
+            id="button-addon3">
+              📍 Current
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- City Weather  -->
+
+    <div class="TimeCityNow">
+
+      <div class="row">
+        <div class="col-6">
+          <h2 class="cityNow" 
+            id="city-now">
+          </h2>
+          <h3 
+          id="description">
+            Description
+          </h3>
+        </div>
+        <div class="col-6">
+          <h5 class="timeNow">
+          </h5>
+        </div>
+      </div>
+
+      <div class="cityWeatherNow">
+        <div class="row">
+          <div class="col-6">
+            <div class="cityNow">
+            <h1>
+              <span 
+              class="temperatureCityNow" 
+              id="temperature-city-now">
+              </span>
+              <span class="degree">
+                <a href="index.html" id="celsium">°C</a>
+              </span>
+              <span class="degree"> | </span>
+              <span class="degree">
+                <a href="index.html" id="fahrenheit">°F</a>
+              </span>
+            </h1>
+            </div>
+
+            <ul class="weatherInfo">
+              <li>
+                <h3>
+                  Pressure:
+                  <span 
+                  class="temperatureInfo"
+                  id="pressure"></span>
+                  <span class="temperatureInfo">%</span>
+                </h3>
+              </li>
+
+              <li>
+                <h3>
+                  Humidity:
+                  <span 
+                  class="temperatureInfo"
+                  id="humidity"></span>
+                  <span class="temperatureInfo">%</span>
+                </h3>
+              </li>
+
+              <li>
+                <h3>
+                  Wind:
+                  <span 
+                  class="temperatureInfo"
+                  id="wind"></span>
+                  <span 
+                  class="temperatureInfo">km/h</span>
+                </h3>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-6">
+            <div class="temperatureInfoIcon">
+              <p 
+              class="sun">☀️</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Today Weather -->
+
+      <div class="today">
+        <h4>
+          Today
+        </h4>
+
+        <div class="row">
+          <div class="col-4">
+            <div class="card text-center" style="width: 10rem;">
+              <div class="card-body">
+                <p class="card-title">
+                  06:00
+                </p>
+                <p class="icon-weather">🌧</p>
+                <p class="card-text">
+                  3°C
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card text-center" style="width: 10rem;">
+              <div class="card-body">
+                <p class="card-title">
+                  06:00
+                </p>
+                <p class="icon-weather">🌨</p>
+                <p class="card-text">
+                  3°C
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card text-center" style="width: 10rem;">
+              <div class="card-body">
+                <p class="card-title">
+                  06:00
+                </p>
+                <p class="icon-weather">🌥</p>
+                <p class="card-text">
+                  3°C
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week Weather -->
+
+      <div class="weekWeather">
+        <h4>
+          Week
+        </h4>
+
+        <ul>
+          <li>
+            <div class="dayWeek">
+              <div class="row">
+                <div class="col-4">
+                  <p class="day">
+                    Monday
+                  </p>
+                </div>
+                <div class="col-4">
+                  <p class="icon-weather">🌧</p>
+                </div>
+                <div class="col-4">
+                  <p class="temperature">
+                    6°C
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="dayWeek">
+              <div class="row">
+                <div class="col-4">
+                  <p class="day">
+                    Tuesday
+                  </p>
+                </div>
+                <div class="col-4">
+                  <p class="icon-weather">🌤</p>
+                </div>
+                <div class="col-4">
+                  <p class="temperature">
+                    3°C
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="dayWeek">
+              <div class="row">
+                <div class="col-4">
+                  <p class="day">
+                    Wednesday
+                  </p>
+                </div>
+                <div class="col-4">
+                  <p class="icon-weather">🌤</p>
+                </div>
+                <div class="col-4">
+                  <p class="temperature">
+                    3°C
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="dayWeek">
+              <div class="row">
+                <div class="col-4">
+                  <p class="day">
+                    Thursday
+                  </p>
+                </div>
+                <div class="col-4">
+                  <p class="icon-weather">🌧</p>
+                </div>
+                <div class="col-4">
+                  <p class="temperature">
+                    6°C
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="dayWeek">
+              <div class="row">
+                <div class="col-4">
+                  <p class="day">
+                    Friday
+                  </p>
+                </div>
+                <div class="col-4">
+                  <p class="icon-weather">☀️</p>
+                </div>
+                <div class="col-4">
+                  <p class="temperature">
+                    10°C
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="dayWeek">
+              <div class="row">
+                <div class="col-4">
+                  <p class="day">
+                    Saturday
+                  </p>
+                </div>
+                <div class="col-4">
+                  <p class="icon-weather">🌤</p>
+                </div>
+                <div class="col-4">
+                  <p class="temperature">
+                    11°C
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="dayWeek">
+              <div class="row">
+                <div class="col-4">
+                  <p class="day">
+                    Sunday
+                  </p>
+                </div>
+                <div class="col-4">
+                  <p class="icon-weather">🌧</p>
+                </div>
+                <div class="col-4">
+                  <p class="temperature">
+                    5°C
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+
+
+ <!-- Footer -->
+
+ <hr class="line">
+ <p class="footer">
+  Made by 
+  <a 
+  class="link"
+  href="https://www.behance.net/Olenka_Zmiyuchka">
+    Olena Shevchenko
+  </a>
+ </p>
+
+ </div>
+ 
+<script 
+  src="src/script.js">
+</script>
+
+</body>
+</html>
