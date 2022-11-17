@@ -44,12 +44,19 @@ TimeNow();
 
 function displayWeatherCondition(response) {
   console.log(response.data);
-  document.querySelector("#city-now").innerHTML = response.data.name;
-  document.querySelector("#temperature-city-now").innerHTML = Math.round(response.data.main.temp);
-  document.querySelector("#pressure").innerHTML = Math.round(response.data.main.pressure);
-  document.querySelector("#humidity").innerHTML = Math.round(response.data.main.humidity);
-  document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
-  document.querySelector("#description").innerHTML = response.data.weather[0].main;
+
+  let cityElement = document.querySelector("#city-now");
+  cityElement.innerHTML = response.data.name;
+  let temperatureElement = document.querySelector("#temperature-city-now");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  let pressureElement = document.querySelector("#pressure");
+  pressureElement.innerHTML = Math.round(response.data.main.pressure);
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = Math.round(response.data.main.humidity);
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = response.data.weather[0].main;
 }
 
 function search(city) {
@@ -64,6 +71,26 @@ function searchCity(event) {
   search(city);
 } 
 
+
+
+// Possition
+
+function searchLocation(position) {
+  let apiKey = "5aace2efb8f27225e8be060bee36d254";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeatherCondition);
+}
+
+function currentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
+let currentButton = document.querySelector("#button-addon3");
+currentButton.addEventListener("click", currentLocation);
+
+
+search("Kyiv");
 
 
 // Celsium & Fahrenheit
@@ -90,23 +117,3 @@ fahrenheit.addEventListener("click", tempFahrenheit);
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchCity);
 
-
-
-// Possition
-
-function searchLocation(position) {
-  let apiKey = "5aace2efb8f27225e8be060bee36d254";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayWeatherCondition);
-}
-
-function currentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(searchLocation);
-}
-
-let currentButton = document.querySelector("#button-addon3");
-currentButton.addEventListener("click", currentLocation);
-
-
-search("Kyiv");
