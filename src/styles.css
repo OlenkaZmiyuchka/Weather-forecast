@@ -128,7 +128,9 @@ a:hover {
   font-family: 'Fragment Mono', monospace;
   font-size: 16px;
 }
-
+.description:first-letter {
+  text-transform: capitalize;
+}
 
 /* Today Weather */
 
