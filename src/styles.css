@@ -105,9 +105,7 @@ a:hover {
 
 .temperatureInfoIcon {
   display: block;
-  text-align: center;
-  font-size: 120px;
-  color: rgb(255, 115, 115);
+  text-align: right;
 }
 
 .cityWeatherNow {
