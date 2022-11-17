@@ -19,8 +19,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap" 
+    rel="stylesheet">
+
 </head>
 
 <body>
@@ -39,7 +43,6 @@
             class="form-control" 
             placeholder="Enter your city" 
             aria-describedby="button-addon2"
-            autofocus="on" 
             id="search-text-input" />
           <button 
             class="btn btn-primary" 
@@ -59,7 +62,7 @@
 
     <!-- City Weather  -->
 
-    <div class="TimeCityNow">
+    <div class="timeCityNow">
 
       <div class="row">
         <div class="col-6">
@@ -67,6 +70,7 @@
             id="city-now">
           </h2>
           <h3 
+          class="description"
           id="description">
             Description
           </h3>
@@ -149,7 +153,8 @@
 
         <div class="row">
           <div class="col-4">
-            <div class="card text-center" style="width: 10rem;">
+            <div class="card bg-dark" 
+              style="width: 10rem;">
               <div class="card-body">
                 <p class="card-title">
                   06:00
@@ -162,7 +167,8 @@
             </div>
           </div>
           <div class="col-4">
-            <div class="card text-center" style="width: 10rem;">
+            <div class="card bg-dark" 
+              style="width: 10rem;">
               <div class="card-body">
                 <p class="card-title">
                   06:00
@@ -175,7 +181,8 @@
             </div>
           </div>
           <div class="col-4">
-            <div class="card text-center" style="width: 10rem;">
+            <div class="card bg-dark" 
+              style="width: 10rem;">
               <div class="card-body">
                 <p class="card-title">
                   06:00
@@ -350,15 +357,9 @@
   <a 
   class="link"
   href="https://www.behance.net/Olenka_Zmiyuchka">
-    Olena Shevchenko
+    Olena Shevchenko.
   </a>
- </p>
- <p
-   class="footer">
-    This site on
-  <a 
-  class="link"
-  href="https://github.com/OlenkaZmiyuchka/Weather-forecast">
+  This site on <a class="link" href="https://github.com/OlenkaZmiyuchka/Weather-forecast">
     GitHub
   </a>
   </p>
