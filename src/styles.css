@@ -1,6 +1,6 @@
 body {
     background: linear-gradient(111.1deg, rgb(16, 26, 34) -4.8%, rgb(255, 115, 115) 82.7%, rgb(255, 175, 123) 97.2%);
-}
+  }
 
 h1 {
   color: rgb(255, 115, 115);
@@ -45,7 +45,7 @@ a:hover {
 .container {
   background-color: rgb(22, 29, 34);
   max-width: 600px;
-  margin: 20px auto;
+  margin: 120px auto; 
   padding: 20px 40px;
   border-color: 1px solid rgb(45, 50, 54);
   border-radius: 20px;
@@ -81,6 +81,7 @@ a:hover {
     background-color: #ffffff;
     color: rgb(22, 29, 34);
     border-color: rgb(22, 29, 34);
+    margin-left: 10px;
   }
 
 .btn-secondary:hover {
