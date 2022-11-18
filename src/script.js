@@ -74,6 +74,7 @@ function displayWeatherCondition(response) {
 }
 
 
+// Search city
 
 function search(city) {
   let apiKey = "5aace2efb8f27225e8be060bee36d254";
@@ -83,9 +84,13 @@ function search(city) {
 
 function searchCity(event) {
   event.preventDefault();
-  let city = document.querySelector("#search-text-input").value;
-  search(city);
+  let cityElement = document.querySelector("#search-text-input");
+  search(cityElement.value);
 } 
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", searchCity);
+
 
 
 
@@ -111,25 +116,25 @@ search("Kyiv");
 
 // Celsium & Fahrenheit
 
-function tempCelsium(event) {
-  event.preventDefault();
-  temperatureCityNow.innerHTML = Math.round("#temperature-city-now");
-}
+// function tempCelsium(event) {
+//   event.preventDefault();
+//   temperatureCityNow.innerHTML = Math.round("#temperature-city-now");
+// }
 
-function tempFahrenheit(event) {
-  event.preventDefault();
-  temperatureCityNow.innerHTML = Math.round((temperature * 9) / 5 + 32);
-}
+// function tempFahrenheit(event) {
+//   event.preventDefault();
+//   temperatureCityNow.innerHTML = Math.round((temperature * 9) / 5 + 32);
+// }
 
-let temperatureCityNow = document.querySelector("#temperature-city-now");
-let temperature = temperatureCityNow.innerHTML;
-temperature = Number(temperature);
+// let temperatureCityNow = document.querySelector("#temperature-city-now");
+// let temperature = temperatureCityNow.innerHTML;
+// temperature = Number(temperature);
 
-let celsium = document.querySelector("#celsium");
-celsium.addEventListener("click", tempCelsium);
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", tempFahrenheit);
+// let celsium = document.querySelector("#celsium");
+// celsium.addEventListener("click", tempCelsium);
+// let fahrenheit = document.querySelector("#fahrenheit");
+// fahrenheit.addEventListener("click", tempFahrenheit);
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", searchCity);
+// let searchForm = document.querySelector("#search-form");
+// searchForm.addEventListener("submit", searchCity);
 
