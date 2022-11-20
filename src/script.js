@@ -99,7 +99,13 @@ function displayForcast() {
 }
 
 
-// Weather in city
+function getForecast(coordinates) {
+  // console.log(coordinates);
+
+  let apiKey = "5aace2efb8f27225e8be060bee36d254";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForcast);
+}
 
 function displayWeatherCondition(response) {
   // console.log(response.data);
@@ -125,6 +131,8 @@ function displayWeatherCondition(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 
 }
 
@@ -200,5 +208,4 @@ currentButton.addEventListener("click", displayCurrentLocation);
 
 
 displayForcast();
-
 search("Kyiv");
