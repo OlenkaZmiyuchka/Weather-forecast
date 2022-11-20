@@ -1,5 +1,3 @@
-// Time & Day now
-
 function TimeNow() {
   let now = new Date();
 
@@ -44,33 +42,44 @@ function TimeNow() {
 }
 TimeNow();
 
-
-function displayForcast() {
-  let forecastElement = document.querySelector("#day-week");
-  let forecastHTML = `            
-    <div class="dayWeek" id="day-week">
-      <div class="row">
-        `;
-  
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
   let days = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thuesday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
-  days.forEach(function (day) {
-    forecastHTML = forecastHTML + `
+
+  return days[day];
+}
+
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
+  let forecastElement = document.querySelector("#day-week");
+  let forecastHTML = `            
+    <div class="dayWeek" id="day-week">
+      <div class="row">
+        `;
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML + `
     <div class="col-4">              
     <p class="day">
-      ${day}
+      ${formatDay(forecastDay.dt)}
     </p>
     </div>
       <div class="col-4">
         <img 
-          src="https://openweathermap.org/img/wn/04d@2x.png" 
+          src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
           alt="" 
           id="icon-week"
           class="iconWeek"
@@ -80,14 +89,15 @@ function displayForcast() {
         <p class="temperatureWeek">
           <span 
             class="temperatureWeekMax"
-            id="temperature-week-max">6</span>°C
+            id="temperature-week-max">${Math.round(forecastDay.temp.max)}</span>°C
           <span class="temperatureForward"> / </span>
           <span 
             class="temperatureWeekMin"
-            id="temperature-week-min">3</span>°C
+            id="temperature-week-min">${Math.round(forecastDay.temp.min)}</span>°C
     </p>
     </div>
     `;
+    }
   })
 
   forecastHTML = forecastHTML + `
@@ -99,12 +109,13 @@ function displayForcast() {
 }
 
 
+
 function getForecast(coordinates) {
   // console.log(coordinates);
 
-  let apiKey = "5aace2efb8f27225e8be060bee36d254";
+  let apiKey = "c819171fe0abdc14039af4ef5dda283b";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForcast);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayWeatherCondition(response) {
@@ -137,7 +148,6 @@ function displayWeatherCondition(response) {
 }
 
 
-// Search city
 
 function search(city) {
   let apiKey = "5aace2efb8f27225e8be060bee36d254";
@@ -207,5 +217,4 @@ let currentButton = document.querySelector("#button-addon3");
 currentButton.addEventListener("click", displayCurrentLocation);
 
 
-displayForcast();
 search("Kyiv");
