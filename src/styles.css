@@ -130,29 +130,6 @@ a:hover {
   text-transform: capitalize;
 }
 
-/* Today Weather */
-
-.card-body {
-  display: block;
-  text-align: center;
-  color: #ffffff;
-  font-size: 16px;
-  font-family: 'Fragment Mono', monospace;
-  background-color: rgb(35, 43, 51);
-  border-radius: 10px;
-  border-color: 2px solid #a4a6aa;
-}
-
-.icon-weather {
-  display: block;
-  text-align: center;
-  font-size: 28px;
-}
-
-.today {
-  margin: 0 auto;
-}
-
 
 /* Week Weather */
 
