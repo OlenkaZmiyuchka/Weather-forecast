@@ -45,6 +45,59 @@ function TimeNow() {
 TimeNow();
 
 
+function displayForcast() {
+  let forecastElement = document.querySelector("#day-week");
+  let forecastHTML = `            
+    <div class="dayWeek" id="day-week">
+      <div class="row">
+        `;
+  
+  let days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thuesday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ];
+  days.forEach(function (day) {
+    forecastHTML = forecastHTML + `
+    <div class="col-4">              
+    <p class="day">
+      ${day}
+    </p>
+    </div>
+      <div class="col-4">
+        <img 
+          src="https://openweathermap.org/img/wn/04d@2x.png" 
+          alt="" 
+          id="icon-week"
+          class="iconWeek"
+          width="50" height="50">
+        </div>
+      <div class="col-4">
+        <p class="temperatureWeek">
+          <span 
+            class="temperatureWeekMax"
+            id="temperature-week-max">6</span>°C
+          <span class="temperatureForward"> / </span>
+          <span 
+            class="temperatureWeekMin"
+            id="temperature-week-min">3</span>°C
+    </p>
+    </div>
+    `;
+  })
+
+  forecastHTML = forecastHTML + `
+      </div>
+        </div>
+    `;
+  forecastElement.innerHTML = forecastHTML;
+
+}
+
 
 // Weather in city
 
@@ -72,6 +125,7 @@ function displayWeatherCondition(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
 }
 
 
@@ -144,5 +198,7 @@ celsiumLink.addEventListener("click", displayCelsiumTemp);
 let currentButton = document.querySelector("#button-addon3");
 currentButton.addEventListener("click", displayCurrentLocation);
 
+
+displayForcast();
 
 search("Kyiv");
